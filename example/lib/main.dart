@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:kcp/kcp.dart' as kcp;
+import 'package:flutter/material.dart';
+import 'package:kcp/kcp.dart';
 
 void main() {
+  KCP.initKcpPlugin();
   runApp(const MyApp());
 }
 
@@ -21,8 +22,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    sumResult = kcp.sum(1, 2);
-    sumAsyncResult = kcp.sumAsync(3, 4);
   }
 
   @override
@@ -55,8 +54,7 @@ class _MyAppState extends State<MyApp> {
                 FutureBuilder<int>(
                   future: sumAsyncResult,
                   builder: (BuildContext context, AsyncSnapshot<int> value) {
-                    final displayValue =
-                        (value.hasData) ? value.data : 'loading';
+                    final displayValue = (value.hasData) ? value.data : 'loading';
                     return Text(
                       'await sumAsync(3, 4) = $displayValue',
                       style: textStyle,

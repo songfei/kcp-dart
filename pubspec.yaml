@@ -11,10 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
+  ffi: ^2.1.0
 
 dev_dependencies:
-  ffi: ^2.0.1
-  ffigen: ^6.1.2
+
+  ffigen: ^9.0.1
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
@@ -79,3 +80,14 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
+
+
+ffigen:
+  name: NativeKCPBindings
+  description: kcp header
+  output: 'lib/generated_bindings.dart'
+  headers:
+    entry-points:
+      - 'src/kcp.h'
+    include-directives:
+      - 'src/kcp.h'
